@@ -295,7 +295,7 @@ runCumulus.with {
 }
 
 smokeTest.with {
-    description("This job runs regression tests on deployed java application")
+    description("This job runs regression tests on deployed infrastructure")
     parameters {
         stringParam("B", '', "Parent build number")
         stringParam("PARENT_BUILD", "Reference_Application_Build", "Parent build name")
