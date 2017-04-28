@@ -160,7 +160,9 @@ validateCumulus.with {
             |find ${WORKSPACE} -regex ".*\\.cumulus\\.yaml\\|.*\\.cumulus\\.yml" | while read file
             |do
             |  cd $(dirname ${file})
+            |  set +e
             |  cp -f ${WORKSPACE}/cf_templates/* .
+            |  set -e
             |  /usr/local/bin/consul-template \\
             |    -vault-addr=http://vault:8200 \\
             |    -vault-token=${VAULT_TOKEN} \\
@@ -241,7 +243,9 @@ runCumulus.with {
             |find ${WORKSPACE} -regex ".*\\.cumulus\\.yaml\\|.*\\.cumulus\\.yml" | while read file
             |do
             |  cd $(dirname ${file})
+            |  set +e
             |  cp -f ${WORKSPACE}/cf_templates/* .
+            |  set -e
             |  /usr/local/bin/consul-template \\
             |    -vault-addr=http://vault:8200 \\
             |    -vault-token=${VAULT_TOKEN} \\
