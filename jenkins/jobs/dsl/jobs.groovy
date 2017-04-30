@@ -90,7 +90,7 @@ getCumulus.with {
             |
             |find ${WORKSPACE}/repo_deps -regex ".*\\.yaml\\|.*\\.yml\\|.*\\.json" -exec cp {} ${WORKSPACE}/cf_templates/. \\;
             |find ${WORKSPACE}/cf_templates -regex ".*\\.cumulus\\.yaml\\|.*\\.cumulus\\.yml" -exec rm -f {} \\;
-            |rm -rf ${WORKSPAE}/repo_deps
+            |rm -rf ${WORKSPACE}/repo_deps
             |set -e'''.stripMargin()
         )        
     }
