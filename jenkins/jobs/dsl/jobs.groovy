@@ -36,15 +36,15 @@ getCumulus.with {
         choiceParam("ENVIRONMENT", [ 'dev', 'uat', 'prod' ], "name of the environment to deploy infrastructure to.")
         stringParam("KEY_NAMESPACE", "adop-c", "The name space in the key store where all the keys and input parameters for stack are stored. The job also adds the CF outputs to the same key space after the pipeline finishes.")
         choiceParam("FORCE_UPDATE", [ 'false', 'true' ], "This parameter controls whether the stack will be updated or not. With this parameter set to true jenkins will tru to run cumulus update.")
-        stringParam("GIT_REPO", GitRepo, "The git repository to get the cumulus file and templates from.")
-        stringParam("GIT_BRANCH", 'master', "The git repository to get the cumulus file and templates from.")
+        //stringParam("GIT_REPO", GitRepo, "The git repository to get the cumulus file and templates from.")
+        //stringParam("GIT_BRANCH", 'master', "The git repository to get the cumulus file and templates from.")
     }
     wrappers {
         preBuildCleanup()
         maskPasswords()
         sshAgent("adop-jenkins-master")
     }
-    scm scmProvider.get(scmNameSpace, '${GIT_REPO}', '${GIT_BRANCH}', "adop-jenkins-master", null)
+    scm scmProvider.get(scmNameSpace, GitRepo, 'master', "adop-jenkins-master", null)
     environmentVariables {
         env('WORKSPACE_NAME', workspaceFolderName)
         env('PROJECT_NAME', projectFolderName)
