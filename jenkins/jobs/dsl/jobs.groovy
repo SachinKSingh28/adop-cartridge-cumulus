@@ -254,6 +254,7 @@ runCumulus.with {
             |  export Environment="${ENVIRONMENT}"
             |  source env.config.sh
             |  rm -f env.config.sh
+            |  echo "Running : cumulus -y $(basename ${file}) -a create"
             |  cumulus -y $(basename ${file}) -a create
             |  if [[ ${FORCE_UPDATE} == "true" ]]; then
             |     echo "Updating the CF stack..."
